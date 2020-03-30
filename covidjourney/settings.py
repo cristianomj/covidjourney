@@ -55,6 +55,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'covidjourney.urls'
 
+SECURE_SSL_REDIRECT = (os.environ.get('DJANGO_SSL_REDIRECT') == 'True')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

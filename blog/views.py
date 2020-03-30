@@ -10,4 +10,4 @@ class PostListCreate(generics.ListCreateAPIView):
     serializer_class = PostSerializer
 
 def home(request):
-    return HttpResponse('<h1>Coming soon...</h1>')
+    return render(request, 'blog/home.html')

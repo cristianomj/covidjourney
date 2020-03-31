@@ -5,7 +5,7 @@ from .api import PostViewSet
 
 # view paths
 urlpatterns = [
-    path('', views.home, name='blog-home'),
+    path('blog', views.home, name='blog-home'),
 ]
 
 # api routes

@@ -1,0 +1,35 @@
+{
+  "name": "covidjourney",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development --watch ./frontend/src/index.js --output ./frontend/static/frontent/main.js",
+    "build": "webpack --mode development ./frontend/src/index.js --output ./frontend/static/frontent/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristianomj/covidjourney.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cristianomj/covidjourney/issues"
+  },
+  "homepage": "https://github.com/cristianomj/covidjourney#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

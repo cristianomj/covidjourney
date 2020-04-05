@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
     'rest_framework',
+    'knox',
+    'authentication',
+    'blog',
     'frontend',
 ]
 
@@ -129,9 +131,12 @@ STATIC_URL = '/static/'
 
 # Disable browseable API in production
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'knox.auth.TokenAuthentication',
+    ),
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
-    )
+    ),
 }
 
 # Configure DB url in heroku

@@ -36,6 +36,7 @@ function BlogPost({ match }) {
         <>
           <h1 className={classes.title}>{blogPost.title}</h1>
           <p className={classes.content}>{blogPost.content}</p>
+          <p className={classes.content}>{blogPost.isFeatured ? 'featured' : 'not featured'}</p>
         </>
       ) : (
         <h1>LOADING</h1>

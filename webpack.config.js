@@ -20,6 +20,7 @@ module.exports = () => {
         components: resolve(__dirname, dir, 'components'),
         helpers: resolve(__dirname, dir, 'helpers'),
         state: resolve(__dirname, dir, 'state'),
+        styles: resolve(__dirname, dir, 'styles'),
       },
       modules: [resolve(__dirname, dir, 'node_modules'), 'node_modules'],
     },

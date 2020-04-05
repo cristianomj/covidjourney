@@ -1,6 +1,6 @@
 import { all, call, put, select, takeLatest } from 'redux-saga/effects';
-import api from '../../../api';
-import { ERROR, LOADED, LOADING } from '../../status';
+import api from 'api';
+import { ERROR, LOADED, LOADING } from 'state/status';
 
 export const GET_POST_REQUEST = 'covidjourney/posts/GET_POST_REQUEST';
 export const GET_POST_SUCCESS = 'covidjourney/posts/GET_POST_SUCCESS';

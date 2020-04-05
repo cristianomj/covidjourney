@@ -1,8 +1,8 @@
 import { compose, applyMiddleware, createStore } from 'redux';
 import createSagaMiddleWare from 'redux-saga';
 
-import rootReducer from '../rootReducer';
-import rootSaga from '../rootSaga';
+import rootReducer from 'state/rootReducer';
+import rootSaga from 'state/rootSaga';
 
 const composeEnhancers =
   // eslint-disable-next-line

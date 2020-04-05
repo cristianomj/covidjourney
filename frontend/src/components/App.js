@@ -12,7 +12,12 @@ class App extends Component {
 
   render() {
     const { post } = this.props;
-    return <h1>{post.title}</h1>
+    return (
+      <>
+        <h1>{post.title}</h1>
+        <p>{post.content}</p>
+      </>
+    )
   };
 }
 

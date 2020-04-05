@@ -2,17 +2,28 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import makeStyles from '@material-ui/core/styles/makeStyles';
+
+const useStyles = makeStyles({
+  title: {
+    color: 'red',
+  },
+  content: {
+    color: 'blue',
+  },
+});
+
 import {
   getBlogPost,
   selectBlogPosts,
 } from 'state/modules/blogPosts';
 import getUrlParam from 'helpers/url/getUrlParam';
 
-function BlogPost(props) {
+function BlogPost({ blogPosts, getBlogPost, match }) {
   const [blogPost, setBlogPost] = useState(null);
+  const classes = useStyles();
 
   useEffect(() => {
-    const { blogPosts, getBlogPost, match } = props;
     const blogPostId = getUrlParam(match, 'id');
     const blogPostRecord = blogPosts[`${blogPostId}`];
     if (!blogPostRecord) getBlogPost(blogPostId);
@@ -23,8 +34,8 @@ function BlogPost(props) {
     <>
       {blogPost ? (
         <>
-          <h1>{blogPost.title}</h1>
-          <p>{blogPost.content}</p>
+          <h1 className={classes.title}>{blogPost.title}</h1>
+          <p className={classes.content}>{blogPost.content}</p>
         </>
       ) : (
         <h1>LOADING</h1>
@@ -35,6 +46,9 @@ function BlogPost(props) {
 
 BlogPost.propTypes = {
   blogPosts: PropTypes.shape({}),
+  getBlogPost: PropTypes.func.isRequired,
+  match: PropTypes.shape({}).isRequired,
+  classes: PropTypes.shape({}).isRequired,
 };
 
 BlogPost.defaultProps = {

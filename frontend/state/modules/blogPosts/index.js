@@ -54,7 +54,7 @@ export default function reducer(state = initialState, action) {
   }
 }
 
-export const selectBlogPosts = state => state.blogPosts.entities;
+export const selectBlogPost = (state, blogPostId) => state.blogPosts.entities[blogPostId];
 
 export const getBlogPost = id => ({ type: GET_BLOG_POST_REQUEST, id });
 

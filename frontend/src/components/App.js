@@ -1,10 +1,38 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import { getPost } from '../../state/modules/posts';
 
 class App extends Component {
-    render() {
-      return <h1>React App</h1>
-    };
+  componentDidMount() {
+    const { getPost } = this.props;
+    getPost(1);
+  }
+
+  render() {
+    const { post } = this.props;
+    return (
+      <>
+        <h1>{post.title}</h1>
+        <p>{post.content}</p>
+      </>
+    )
+  };
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+App.propTypes = {
+  post: PropTypes.object,
+};
+
+App.defaultProps = {
+  post: {},
+};
+
+const mapStateToProps = (state) => ({
+  post: state.posts.entities['1'],
+});
+
+const mapDispatchToProps = { getPost };
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

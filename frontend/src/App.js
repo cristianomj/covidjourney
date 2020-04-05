@@ -5,13 +5,13 @@ import { createBrowserHistory, createMemoryHistory } from 'history';
 
 const history = typeof window !== 'undefined' ? createBrowserHistory() : createMemoryHistory();
 
-import Post from './Post';
+import BlogPost from './BlogPost';
 
 export default function App() {
   return (
     <Router history={history}>
       <>
-        <Route exact path="/post/:id" component={Post} />
+        <Route exact path="/post/:id" component={BlogPost} />
       </>
     </Router>
   );

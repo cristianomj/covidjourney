@@ -1,5 +1,5 @@
 import { request } from './';
 
 export default {
-  getPost: id => request(`posts/${id}`),
+  getBlogPost: id => request(`posts/${id}`),
 };

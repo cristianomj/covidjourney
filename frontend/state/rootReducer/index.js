@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import posts from 'state/modules/posts';
+import blogPosts from 'state/modules/blogPosts';
 
 export default combineReducers({
-  posts,
+  blogPosts,
 });

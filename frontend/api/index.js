@@ -1,6 +1,6 @@
 import 'isomorphic-fetch';
 
-import posts from './posts';
+import blogPosts from './blogPosts';
 
 const defaultOptions = {
   credentials: 'include',
@@ -22,5 +22,5 @@ export function request(path, options = {}, isJSON = true) {
 }
 
 export default {
-  ...posts,
+  ...blogPosts,
 };

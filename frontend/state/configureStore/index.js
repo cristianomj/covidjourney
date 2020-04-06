@@ -1,8 +1,12 @@
-import { compose, applyMiddleware, createStore } from 'redux';
+import { createBrowserHistory } from 'history';
+import { applyMiddleware, compose, createStore } from 'redux';
+import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleWare from 'redux-saga';
 
-import rootReducer from 'state/rootReducer';
+import createRootReducer from 'state/rootReducer';
 import rootSaga from 'state/rootSaga';
+
+export const history = createBrowserHistory();
 
 const composeEnhancers =
   // eslint-disable-next-line
@@ -12,11 +16,14 @@ export default function configureStore(initialState) {
   const sagaMiddleware = createSagaMiddleWare();
 
   const store = createStore(
-    rootReducer,
+    createRootReducer(history),
     initialState,
     composeEnhancers(
-      applyMiddleware(sagaMiddleware)
-    )
+      applyMiddleware(
+        routerMiddleware(history),
+        sagaMiddleware
+      ),
+    ),
   );
   store.runSagaTask = () => {
     store.sagaTask = sagaMiddleware.run(rootSaga);

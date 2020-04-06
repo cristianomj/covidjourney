@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
+
+import {
+  getBlogPost,
+  selectBlogPost,
+} from 'state/modules/blogPosts/index';
+import getUrlParam from 'helpers/url/getUrlParam/index';
 
 const useStyles = makeStyles({
   title: {
@@ -12,12 +18,6 @@ const useStyles = makeStyles({
     color: 'blue',
   },
 });
-
-import {
-  getBlogPost,
-  selectBlogPost,
-} from 'state/modules/blogPosts';
-import getUrlParam from 'helpers/url/getUrlParam';
 
 function BlogPost({ match }) {
   const classes = useStyles();

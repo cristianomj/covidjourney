@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from knox.models import AuthToken
 from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
 
-class RegisterApi(generics.GenericAPIView):
+class SignUpApi(generics.GenericAPIView):
   serializer_class = RegisterSerializer
 
   def post(self, request, *args, **kwargs):
@@ -16,7 +16,7 @@ class RegisterApi(generics.GenericAPIView):
       "token": token
     })
 
-class LoginApi(generics.GenericAPIView):
+class SignInApi(generics.GenericAPIView):
   serializer_class = LoginSerializer
 
   def post(self, request, *args, **kwargs):

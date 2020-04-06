@@ -1,6 +1,7 @@
 import 'isomorphic-fetch';
 
 import blogPosts from './blogPosts';
+import auth from './auth';
 
 const defaultOptions = {
   credentials: 'include',
@@ -8,10 +9,12 @@ const defaultOptions = {
   headers: {},
 };
 
-export function request(path, options = {}, isJSON = true) {
+export function request(path, options = {}, token = null, isJSON = true) {
   const combinedOptions = { ...defaultOptions, ...options };
 
   if (isJSON) combinedOptions.headers['Content-Type'] = 'application/json';
+
+  if (token) combinedOptions.header['Authorization'] = `Token ${token}`;
 
   return fetch(`/api/${path}`, {
     ...combinedOptions,
@@ -23,4 +26,5 @@ export function request(path, options = {}, isJSON = true) {
 
 export default {
   ...blogPosts,
+  ...auth,
 };

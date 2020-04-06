@@ -1,18 +1,42 @@
-import React from 'react';
-import { Router, Route } from 'react-router-dom'
+import React from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 
-import { createBrowserHistory, createMemoryHistory } from 'history';
+import { useAuthDataContext } from "components/AuthDataProvider";
 
-const history = typeof window !== 'undefined' ? createBrowserHistory() : createMemoryHistory();
+import BlogPostPage from './BlogPost';
+import SignUpPage from './SignUp';
+import SignInPage from './SignIn';
+import UserInfo from './UserInfo';
+import HomePage from './Home';
 
-import BlogPost from './BlogPost';
+const PrivateRoute = ({ component, ...options }) => {
+  const { user } = useAuthDataContext();
 
-export default function App() {
-  return (
-    <Router history={history}>
-      <>
-        <Route exact path="/post/:id" component={BlogPost} />
-      </>
-    </Router>
-  );
-}
+  if (user) {
+    return <Route {...options} component={component} />;
+  }
+
+  return <Redirect from={options.path} to="/signin" {...options} />;
+};
+
+const RedirectIfSignedIn = ({ component, ...options }) => {
+  const { user } = useAuthDataContext();
+
+  if (user) {
+    return <Redirect from={options.path} to="/" {...options} />;
+  }
+
+  return <Route {...options} component={component} />;
+};
+
+const App = () => (
+  <Switch>
+    <RedirectIfSignedIn exact path="/signup" component={SignUpPage} />
+    <RedirectIfSignedIn exact path="/signin" component={SignInPage} />
+    <Route exact path="/post/:id" component={BlogPostPage} />
+    <Route exact path="/" component={HomePage} />
+    <PrivateRoute exact path="/details" compenent={UserInfo} />
+  </Switch>
+);
+
+export default App;

@@ -12,14 +12,20 @@ export const signIn = payload =>
     body: JSON.stringify(payload),
   });
 
+export const verifyUser = payload =>
+  request('auth/verify', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+
 export const getUser = token =>
   request('auth/user', {
     token,
   });
 
-
 export default {
   signUp,
   signIn,
+  verifyUser,
   getUser,
 };

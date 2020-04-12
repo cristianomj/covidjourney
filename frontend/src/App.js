@@ -8,6 +8,7 @@ import SignInPage from './SignIn';
 import BlogPostPage from './BlogPost';
 import UserInfo from './UserInfo';
 import HomePage from './Home';
+import VerifyPage from './Verify';
 
 const PrivateRoute = ({ component, ...options }) => {
   const { user } = useAuthDataContext();
@@ -33,6 +34,7 @@ const App = () => (
   <Switch>
     <RedirectIfSignedIn exact path="/signup" component={SignUpPage} />
     <RedirectIfSignedIn exact path="/signin" component={SignInPage} />
+    <RedirectIfSignedIn exact path="/verify/:id/:token" component={VerifyPage} />
     <PrivateRoute exact path="/details" compenent={UserInfo} />
     <Route exact path="/" component={HomePage} />
     <Route exact path="/post/:id" component={BlogPostPage} />

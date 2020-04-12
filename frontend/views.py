@@ -14,3 +14,6 @@ def signIn(request):
 
 def details(request):
     return render(request, 'frontend/index.html')
+
+def profile(request):
+    return render(request, 'frontend/index.html')

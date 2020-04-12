@@ -3,12 +3,8 @@ from rest_framework import routers
 from . import views
 from .api import PostViewSet
 
-# view paths
-urlpatterns = [
-    path('blog', views.home, name='blog-home'),
-]
+urlpatterns = []
 
-# api routes
 router = routers.DefaultRouter()
 router.register('api/posts', PostViewSet, 'posts')
 

@@ -41,9 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'knox',
-    'authentication',
-    'blog',
-    'frontend',
+    'authentication.apps.AuthenticationConfig',
+    'user.apps.UserConfig',
+    'blog.apps.BlogConfig',
+    'frontend.apps.FrontendConfig',
 ]
 
 MIDDLEWARE = [

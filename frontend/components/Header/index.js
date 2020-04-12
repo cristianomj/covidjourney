@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -7,8 +6,8 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 
+import Link from 'components/Link';
 import { useAuthDataContext } from "components/AuthDataProvider";
 
 const useStyles = makeStyles((theme) => ({
@@ -40,7 +39,7 @@ const sections = [
   { title: 'RNs', url: '#' },
 ];
 
-export default function Header(props) {
+export default function Header() {
   const classes = useStyles();
   const { user, onSignOut } = useAuthDataContext();
 
@@ -67,9 +66,9 @@ export default function Header(props) {
         <IconButton>
           <SearchIcon />
         </IconButton>
-        <Link href={!user ? '/signup' : ''} variant="body2">
+        <Link href={user ? '/' : '/signin'} variant="body2">
           <Button variant="outlined" size="small" onClick={handleClick}>
-            {user ? 'Sign Out' : 'Sign Up'}
+            {user ? 'Sign Out' : 'Sign In'}
           </Button>
         </Link>
       </Toolbar>
@@ -90,8 +89,3 @@ export default function Header(props) {
     </React.Fragment>
   );
 }
-
-Header.propTypes = {
-  sections: PropTypes.array,
-  title: PropTypes.string,
-};

@@ -9,12 +9,12 @@ const defaultOptions = {
   headers: {},
 };
 
-export function request(path, options = {}, token = null, isJSON = true) {
+export function request(path, options = {}, isJSON = true) {
   const combinedOptions = { ...defaultOptions, ...options };
+  const { token } = options;
 
   if (isJSON) combinedOptions.headers['Content-Type'] = 'application/json';
-
-  if (token) combinedOptions.header['Authorization'] = `Token ${token}`;
+  if (token) combinedOptions.headers['Authorization'] = `Token ${token}`;
 
   return fetch(`/api/${path}`, {
     ...combinedOptions,

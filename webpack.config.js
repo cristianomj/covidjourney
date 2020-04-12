@@ -17,6 +17,7 @@ module.exports = () => {
     resolve: {
       alias: {
         api: resolve(__dirname, dir, 'api'),
+        assets: resolve(__dirname, dir, 'assets'),
         components: resolve(__dirname, dir, 'components'),
         helpers: resolve(__dirname, dir, 'helpers'),
         state: resolve(__dirname, dir, 'state'),

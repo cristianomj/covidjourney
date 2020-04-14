@@ -40,9 +40,9 @@ export default function SignUp() {
   const classes = useStyles();
   const { onSignUp } = useAuthDataContext();
 
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
   const [error, setError] = useState({});
 
   const {
@@ -88,6 +88,7 @@ export default function SignUp() {
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
+                required
                 fullWidth
                 id="email"
                 label="Email Address"

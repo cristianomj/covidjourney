@@ -15,7 +15,7 @@ const AuthDataProvider = props => {
   useEffect(() => {
     if (authData.user) {
       try {
-        (async function anyNameFunction() {
+        (async function getUser() {
           await api.getUser(authData.token);
         })();
       } catch (error) {

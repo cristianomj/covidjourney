@@ -15,9 +15,9 @@ from .serializers import PostSerializer
 #     def perform_create(self, serializer):
 #         serializer.save(owner=self.request.user)
 
-class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
+class Posts(viewsets.ModelViewSet):
     permission_classes = [
-        permissions.AllowAny
+        permissions.IsAuthenticatedOrReadOnly
     ]
     serializer_class = PostSerializer
+    queryset = Post.objects.all()

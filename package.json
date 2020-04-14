@@ -35,6 +35,7 @@
   "dependencies": {
     "@material-ui/core": "^4.9.9",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.49",
     "classnames": "^2.2.6",
     "connected-react-router": "^6.8.0",
     "history": "^4.10.1",
